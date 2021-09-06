@@ -3,7 +3,7 @@ using Avito.Lib.GameObjects.Shapes;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using AvText = Avito.Lib.GameObjects.UI.Text;
+using AvText = Avito.Lib.GameObjects.UI.Button;
 
 namespace Avito.Lib.Scene
 {

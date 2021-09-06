@@ -26,6 +26,12 @@ namespace Avito.Lib.GameObjects
         {
             RenderStates states = RenderStates.Default;
             states.Transform = Components.GetComponent<AvTransform>().Transform;
+
+            Draw(window, states);
+        }
+
+        public virtual void Draw(RenderWindow window, RenderStates states)
+        {
             Renderable.Draw(window, states);
         }
     }

@@ -1,7 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SfText = SFML.Graphics.Text;
-
 namespace Avito.Lib.GameObjects.UI
 {
     public class Text : Drawable<SfText>, UiComponent
@@ -11,7 +10,7 @@ namespace Avito.Lib.GameObjects.UI
             get 
             {
                 var bounds = Renderable.GetGlobalBounds();
-                return new(bounds.Width, bounds.Height);
+                return new(bounds.Width, Renderable.CharacterSize);
             }
         }
 
