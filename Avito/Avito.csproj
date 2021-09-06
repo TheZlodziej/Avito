@@ -16,4 +16,12 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="XCOPY &quot;$(SolutionDir)Avito\Assets&quot; &quot;$(TargetDir)Assets&quot; /S /Y" />
+  </Target>
+
 </Project>

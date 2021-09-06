@@ -6,11 +6,14 @@ namespace Avito.Lib.Scene
     class SceneManager
     {
         private readonly Dictionary<Type, IScene> _scenes = new();
-        public IScene? ActiveScene { get; set; }
-        public SceneManager()
+        public IScene ActiveScene { get; set; }
+
+        public SceneManager() : this(typeof(GameScene)) { }
+
+        public SceneManager(Type defaultScene)
         {
             LoadScenes();
-            SetScene<GameScene>();
+            ActiveScene = _scenes[defaultScene];
         }
         private void LoadScenes()
         {

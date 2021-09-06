@@ -6,16 +6,16 @@ namespace Avito.Lib.Game
 {
     public class Game
     {
-        private GameWindow _window = new();
-        private SceneManager _scenes = new();
-        private Clock _clock = new();
-        private Time _deltaTime = new();
+        private GameWindow Window { get; set; } = new();
+        private SceneManager Scenes { get; set; } = new();
+        private Clock Clock { get; set; } = new();
+        private Time DeltaTime { get; set; } = new();
 
         public void Start()
         {
-            while (_window.IsOpen)
+            while (Window.IsOpen)
             {
-                _window.DispatchEvents();
+                Window.DispatchEvents();
                 Update();
                 Draw();
             }
@@ -23,14 +23,14 @@ namespace Avito.Lib.Game
 
         private void Update() 
         {
-            _deltaTime = _clock.Restart();
-            _scenes.ActiveScene.Update(_deltaTime);
+            DeltaTime = Clock.Restart();
+            Scenes.ActiveScene.Update(DeltaTime);
         }
         private void Draw()
         {
-            _window.Clear(GameWindow.ClearColor);
-            _scenes.ActiveScene.Draw(_window);
-            _window.Display();
+            Window.Clear(GameWindow.ClearColor);
+            Scenes.ActiveScene.Draw(Window);
+            Window.Display();
         }
     }
 }

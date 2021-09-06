@@ -1,16 +1,17 @@
 ﻿using SFML.Graphics;
 using System;
+using GameAssets = Avito.Assets;
 
 namespace Avito.Lib.Window
 {
     public class GameWindow : RenderWindow
     {
-        public static int Width { get; private set; } = 720;
-        public static int Height { get; private set; } = 540;
-        public static string Title { get; private set; } = "Avito";
+        public static uint Width { get; private set; } = GameAssets.WindowWidth;
+        public static uint Height { get; private set; } = GameAssets.WindowHeight;
+        public static string Title { get; private set; } = GameAssets.WindowTitle;
         public static Color ClearColor { get; private set; } = Color.Red;
 
-        public GameWindow() : base(new((uint)Width, (uint)Height), Title)
+        public GameWindow() : base(new(Width, Height), Title)
         {
             AddWindowEvents();
         }
