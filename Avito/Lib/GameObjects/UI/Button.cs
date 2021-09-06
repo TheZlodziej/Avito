@@ -22,17 +22,23 @@ namespace Avito.Lib.GameObjects.UI
 
         public void Click()
         {
-            return;
+            _rect.FillColor = Color.Red;
         }
 
-        public void Hover()
+        public void MouseEnter()
         {
-            return;
+            _rect.FillColor = Color.Blue;
+        }
+
+        public void MouseLeft()
+        {
+            _rect.FillColor = Color.Green;
         }
 
         public void Draw(RenderWindow window)
         {
-            return;
+            window.Draw(_rect);
+            window.Draw(_text);
         }
 
         public virtual void Update(Time deltaTime, RenderWindow? window = null)
@@ -42,12 +48,16 @@ namespace Avito.Lib.GameObjects.UI
 
             if (MouseIsOver(window))
             {
-                Hover();
+                MouseEnter();
 
                 if (Mouse.IsButtonPressed(Mouse.Button.Left))
                 {
                     Click();
                 }
+            }
+            else
+            {
+                MouseLeft();
             }
         }
 

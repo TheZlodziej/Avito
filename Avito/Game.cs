@@ -24,7 +24,7 @@ namespace Avito
         private void Update() 
         {
             DeltaTime = Clock.Restart();
-            Scenes.ActiveScene.Update(DeltaTime);
+            Scenes.ActiveScene.Update(DeltaTime, Window);
         }
         private void Draw()
         {
