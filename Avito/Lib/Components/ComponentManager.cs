@@ -6,9 +6,9 @@ namespace Avito.Lib.Components
 {
     public class ComponenetManager
     {
-        public GameObject Owner { get; private set; }
+        public IGameObject Owner { get; private set; }
         private Dictionary<Type, IComponent> Components { get; set; } = new();
-        public ComponenetManager(GameObject owner)
+        public ComponenetManager(IGameObject owner)
         {
             Owner = owner;
         }

@@ -1,42 +1,60 @@
-﻿using Avito.Lib.GameObjects.Shapes;
+﻿using Avito.Lib.Components;
 using SFML.Graphics;
 using SFML.System;
-using AvTransform = Avito.Lib.Components.Transform;
+using SFML.Window;
 
 namespace Avito.Lib.GameObjects.UI
 {
-    class Button : Rectangle, UiComponent
+    class Button : IUi
     {
-        public Vector2f Padding { get; } = new(13, 7);// padding left top (right bottom assumed the same)
+        private readonly RectangleShape _rect;
+        private readonly Text _text;
 
-        public Text Text { get; set; }
+        public Button(string text) : this(text, Assets.DefaultFont, 20u) { }
 
-        public Button(string text = "", uint characterSize = 20u) :
-            this(text, Assets.DefaultFont, characterSize)
-        { }
+        public Button(string text, Font font, uint characterSize):base()
+        {
+            _text = new(text, font, characterSize);
 
-        public Button(string text, Font font, uint characterSize) :
-            this(text, font, characterSize, 0f, 0f)
-        {  
-            Renderable.Size = Text.Size + 2 * Padding;
+            var textBounds = _text.GetGlobalBounds();
+            _rect = new(new Vector2f(textBounds.Width + 20, _text.CharacterSize + 14));
         }
 
-        public Button(string text, Font font, uint characterSize, float width, float height) : 
-            base(width, height)
+        public void Click()
         {
-            Text = new Text(text, font, characterSize);
-            
-            var rectTransform = Components.GetComponent<AvTransform>();
-            var textTransform = Text.Components.GetComponent<AvTransform>();
-            
-            textTransform.Position = Size / 2f + Padding;
-            textTransform.RelativeTo = rectTransform;
+            return;
         }
 
-        public override void Draw(RenderWindow window)
+        public void Hover()
         {
-            base.Draw(window);
-            Text.Draw(window);
+            return;
+        }
+
+        public void Draw(RenderWindow window)
+        {
+            return;
+        }
+
+        public virtual void Update(Time deltaTime, RenderWindow? window = null)
+        {
+            if (window == null)
+                return;
+
+            if (MouseIsOver(window))
+            {
+                Hover();
+
+                if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+                    Click();
+                }
+            }
+        }
+
+        public bool MouseIsOver(RenderWindow relativeWindow)
+        {
+            var mousePos = (Vector2f)Mouse.GetPosition(relativeWindow);
+            return _rect.GetGlobalBounds().Contains(mousePos.X, mousePos.Y);
         }
     }
 }

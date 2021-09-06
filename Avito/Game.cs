@@ -2,7 +2,7 @@
 using Avito.Lib.Window;
 using SFML.System;
 
-namespace Avito.Lib.Game
+namespace Avito
 {
     public class Game
     {

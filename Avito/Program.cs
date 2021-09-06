@@ -1,10 +1,8 @@
-﻿using Avito.Lib.Game;
-
-namespace Avito
+﻿namespace Avito
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             Game game = new();           
             game.Start();
