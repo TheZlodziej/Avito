@@ -8,7 +8,7 @@ namespace Avito.Lib.Window
         public static int Width { get; private set; } = 720;
         public static int Height { get; private set; } = 540;
         public static string Title { get; private set; } = "Avito";
-        public static Color ClearColor { get; private set; } = Color.White;
+        public static Color ClearColor { get; private set; } = Color.Red;
 
         public GameWindow() : base(new((uint)Width, (uint)Height), Title)
         {

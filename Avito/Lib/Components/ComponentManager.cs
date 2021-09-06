@@ -4,40 +4,24 @@ using Avito.Lib.GameObjects;
 
 namespace Avito.Lib.Components
 {
-    class ComponenetManager
+    public class ComponenetManager
     {
-        public GameObject _owner;
-        private Dictionary<Type, Component> _components = new();
-
+        public GameObject Owner { get; private set; }
+        private Dictionary<Type, IComponent> Components { get; set; } = new();
         public ComponenetManager(GameObject owner)
         {
-            _owner = owner;
-            Add<Transform>();
+            Owner = owner;
         }
-        public T Add<T>() where T : Component, new()
+        public T Add<T>() where T : IComponent, new()
         {
-            if (!_components.ContainsKey(typeof(T)))
-            {
-                T newComponent = new()
-                {
-                    Owner = _owner
-                };
-                
-                _components.Add(typeof(T), newComponent);
-                return newComponent;
-            }
+            if (!Components.ContainsKey(typeof(T)))
+                Components.Add(typeof(T), new T());
 
-            return null;
+            return GetComponent<T>();
         }
-
-        public T GetComponent<T>() where T : Component
+        public T GetComponent<T>() where T : IComponent
         {
-            if (_components.ContainsKey(typeof(T)))
-            {
-                return (T)_components[typeof(T)];
-            }
-
-            return null;
+            return (T)Components[typeof(T)];
         }
     }
 }

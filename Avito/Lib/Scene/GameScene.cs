@@ -1,30 +1,33 @@
-﻿using SFML.Graphics;
+﻿using Avito.Lib.GameObjects;
+using Avito.Lib.GameObjects.Shapes;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
+using System.IO;
+
 namespace Avito.Lib.Scene
 {
-    class GameScene : Scene
+    class GameScene : IScene
     {
-        private RectangleShape test = new(new Vector2f(100, 150));
+        private Textured test = new(new Texture(Path.Combine(System.IO.Directory.GetCurrentDirectory(), "../../../test.png")));
+        private Rectangle rect = new(300, 400);
 
-        public GameScene()
-        { 
-            test.Origin = test.Size / 2f;
+        public GameScene():base()
+        {
+            rect.Renderable.FillColor = Color.Cyan;
         }
 
-        public override void Draw(RenderWindow window)
+        public void Draw(RenderWindow window)
         {
-            test.Position = (Vector2f)Mouse.GetPosition(window);
-            window.Draw(test);
+            test.Components.GetComponent<Components.Transform>().Position = (Vector2f)Mouse.GetPosition(window);
+            test.Draw(window);
+            rect.Draw(window);
         }
-
-        public override void Update(Time deltaTime)
+        public void Update(Time deltaTime)
         {
-            if (Mouse.IsButtonPressed(Mouse.Button.Left))
-                test.FillColor = new(255, 0, 0);
-            else
-                test.FillColor = new(0, 0, 0);
+            test.Update(deltaTime);
+            rect.Update(deltaTime);
         }
     }
 }
