@@ -11,13 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="test.png">
+    <None Update="Assets\Images\test.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Assets\Images\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

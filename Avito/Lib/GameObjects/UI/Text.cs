@@ -1,7 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SfText = SFML.Graphics.Text;
-using GameAssets = Avito.Assets;
 
 namespace Avito.Lib.GameObjects.UI
 {
@@ -16,12 +15,12 @@ namespace Avito.Lib.GameObjects.UI
             }
         }
 
-        public Text(string text = "", uint characterSize = 16u) : 
-            this(text, GameAssets.DefaultFont, characterSize) { }
+        public Text(string text = "", uint characterSize = 20u) : 
+            this(text, Assets.DefaultFont, characterSize) { }
         public Text(string text, Font font, uint characterSize) : 
             base(new SfText(text, font, characterSize))
-        { 
-            
+        {
+            Renderable.FillColor = Color.Black;
         }
     }
 }

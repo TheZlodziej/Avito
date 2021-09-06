@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using SFML.Graphics;
+using System.IO;
 using SfFont = SFML.Graphics.Font;
 
 namespace Avito
@@ -15,5 +16,8 @@ namespace Avito
 
         // FONTS
         public static SfFont DefaultFont { get; set; } = new(Path.Join(AssetsDirectory, "Fonts\\default_font.ttf"));
+
+        // TEST
+        public static Texture TestTexture { get; set; } = new(Path.Join(AssetsDirectory, "Images\\test.png"));
     }
 }
