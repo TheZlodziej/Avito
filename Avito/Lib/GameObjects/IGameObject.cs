@@ -1,5 +1,4 @@
-﻿using Avito.Lib.Components;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
 
 namespace Avito.Lib.GameObjects
