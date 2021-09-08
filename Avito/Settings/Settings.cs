@@ -32,7 +32,7 @@ namespace Avito
 
         public static class Physics
         {
-            public static Vector2f Friction { get; set; } = new(10f,10f);
+            public static float FrictionCoeff { get; set; } = 0.998f;
             public static float MoveForce { get; set; } = 10f;
         }
     }

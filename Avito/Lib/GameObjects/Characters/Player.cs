@@ -47,8 +47,8 @@ namespace Avito.Lib.GameObjects.Characters
             if (Keyboard.IsKeyPressed(Settings.Controls.MoveDown))
                 dir.Y += 1;
 
-            dir = Utils.Normalize(dir);
-            Physics.AddForce(Settings.Physics.Movement.PlayerMoveForce * dir);
+            dir = Utils.NormalizeVec2(dir);
+            Physics.AddForce(Settings.Physics.MoveForce * dir);
         }
     }
 }
