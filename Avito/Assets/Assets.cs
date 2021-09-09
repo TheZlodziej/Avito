@@ -14,6 +14,7 @@ namespace Avito
 
         // TEXTURES
         public static Texture PlayerTexture { get; set; } = new(Path.Join(AssetsDirectory, "Images\\test.png"));
+        public static Texture CursorTexture { get; set; } = new(Path.Join(AssetsDirectory, "Images\\cursor.png"));
 
         // TEST
         public static Texture TestTexture { get; set; } = new(Path.Join(AssetsDirectory, "Images\\test.png"));

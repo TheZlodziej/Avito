@@ -1,4 +1,5 @@
-﻿using SFML.System;
+﻿using SFML.Graphics;
+using SFML.System;
 using System;
 
 namespace Avito.Lib
@@ -28,6 +29,12 @@ namespace Avito.Lib
         public static Vector2f ClampVec2(Vector2f vec, float min, float max)
         {
             return new(Math.Clamp(vec.X, min, max), Math.Clamp(vec.Y, min, max));
+        }
+
+        public static Vector2f SpriteSize(Sprite sprite)
+        {
+            var bounds = sprite.GetGlobalBounds();
+            return new(bounds.Width, bounds.Height);
         }
     }
 }

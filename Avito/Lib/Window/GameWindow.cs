@@ -15,6 +15,7 @@ namespace Avito.Lib.Window
         public GameWindow() : base(new(Width, Height), Title)
         {
             AddWindowEvents();
+            SetMouseCursorVisible(false);
         }
 
         private void AddWindowEvents()
