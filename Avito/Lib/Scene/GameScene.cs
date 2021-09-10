@@ -25,7 +25,6 @@ namespace Avito.Lib.Scene
         public override void Update(Time deltaTime, RenderWindow window)
         {
             base.Update(deltaTime, window);
-
             btn.Update(deltaTime, window);
             player.Update(deltaTime, window);
         }
