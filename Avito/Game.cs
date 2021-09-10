@@ -1,5 +1,4 @@
-﻿using Avito.Lib.GameObjects.UI;
-using Avito.Lib.Scene;
+﻿using Avito.Lib.Scene;
 using Avito.Lib.Window;
 using SFML.System;
 
@@ -26,7 +25,7 @@ namespace Avito
         {
             DeltaTime = Clock.Restart();
             Scenes.ActiveScene.Update(DeltaTime, Window);
-            Cursor.Update(DeltaTime, Window);
+            Cursor.Update(Window);
         }
         private void Draw()
         {

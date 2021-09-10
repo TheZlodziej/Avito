@@ -2,9 +2,9 @@
 using SFML.System;
 using SFML.Window;
 
-namespace Avito.Lib.GameObjects.UI
+namespace Avito.Lib.Window
 {
-    class Cursor : Sprite, IGameObject
+    class Cursor : Sprite
     {
         public Cursor() : base(Assets.CursorTexture)
         {
@@ -16,12 +16,9 @@ namespace Avito.Lib.GameObjects.UI
             window.Draw(this);
         }
 
-        public void Update(Time deltaTime, RenderWindow? window = null)
-        {
-            if (window == null)
-                return;
-
-            Position = (Vector2f)Mouse.GetPosition(window);
+        public void Update(RenderWindow window)
+        { 
+            Position = window.MapPixelToCoords(Mouse.GetPosition(window));
         }
     }
 }

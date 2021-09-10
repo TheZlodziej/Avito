@@ -41,11 +41,8 @@ namespace Avito.Lib.GameObjects.UI
             window.Draw(_text);
         }
 
-        public virtual void Update(Time deltaTime, RenderWindow? window = null)
+        public virtual void Update(Time deltaTime, RenderWindow window)
         {
-            if (window == null)
-                return;
-
             if (MouseIsOver(window))
             {
                 MouseEnter();

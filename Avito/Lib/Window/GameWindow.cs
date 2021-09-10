@@ -16,6 +16,7 @@ namespace Avito.Lib.Window
         {
             AddWindowEvents();
             SetMouseCursorVisible(false);
+            SetFramerateLimit(GameSettings.MaxFps);
         }
 
         private void AddWindowEvents()

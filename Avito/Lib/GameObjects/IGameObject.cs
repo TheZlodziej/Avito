@@ -5,7 +5,7 @@ namespace Avito.Lib.GameObjects
 {
     public interface IGameObject
     {
-        public abstract void Update(Time deltaTime, RenderWindow? window = null);
+        public abstract void Update(Time deltaTime, RenderWindow window);
         public abstract void Draw(RenderWindow window);
     }
 }
