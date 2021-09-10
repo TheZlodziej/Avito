@@ -11,16 +11,15 @@ namespace Avito.Lib.Window
 
         public void Update(RenderWindow window)
         {
-            window.SetView(this);
-            var winSize = (Vector2f)window.Size;
-            // TODO: [?] set scale of the view so it shows only original
+            Size = (Vector2f)window.Size;
 
-            Size = winSize;
             if (Pin == null)
-                Center = winSize / 2f;
+                Center = Size / 2f;
 
             else
                 Center = Pin.Position;
+            
+            window.SetView(this);
         }
     }
 }
