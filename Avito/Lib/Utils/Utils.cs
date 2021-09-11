@@ -1,5 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
+using SFML.Window;
 using System;
 
 namespace Avito.Lib
@@ -35,6 +36,21 @@ namespace Avito.Lib
         {
             var bounds = sprite.GetGlobalBounds();
             return new(bounds.Width, bounds.Height);
+        }
+
+        public static float RadToDeg(float rad)
+        {
+            return 180f / MathF.PI * rad; 
+        }
+
+        public static float DegToRad(float deg)
+        {
+            return MathF.PI / 180f * deg;
+        }
+
+        public static Vector2f CursorCoords(RenderWindow window)
+        {
+            return window.MapPixelToCoords(Mouse.GetPosition(window));
         }
     }
 }

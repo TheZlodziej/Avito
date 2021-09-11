@@ -16,6 +16,7 @@ namespace Avito
         public static uint WindowHeight { get; set; } = 520u;
         public static Color WindowClearColor { get; set; } = Color.Red;
         public static uint MaxFps { get; internal set; } = 120;
+        public static ContextSettings WindowSettings { get; internal set; } = new() { AntialiasingLevel = 8 };
 
         public static class Controls
         {

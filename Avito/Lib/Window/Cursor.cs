@@ -1,6 +1,4 @@
 ﻿using SFML.Graphics;
-using SFML.System;
-using SFML.Window;
 
 namespace Avito.Lib.Window
 {
@@ -18,7 +16,7 @@ namespace Avito.Lib.Window
 
         public void Update(RenderWindow window)
         { 
-            Position = window.MapPixelToCoords(Mouse.GetPosition(window));
+            Position = Utils.CursorCoords(window);
         }
     }
 }

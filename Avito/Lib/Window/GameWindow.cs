@@ -1,5 +1,6 @@
 ﻿using SFML.Graphics;
 using System;
+using SFML.Window;
 
 using GameSettings = Avito.Settings;
 
@@ -12,7 +13,7 @@ namespace Avito.Lib.Window
         public static string Title { get; private set; } = GameSettings.WindowTitle;
         public static Color ClearColor { get; private set; } = GameSettings.WindowClearColor;
 
-        public GameWindow() : base(new(Width, Height), Title)
+        public GameWindow() : base(new(Width, Height), Title, Styles.Default, GameSettings.WindowSettings)
         {
             AddWindowEvents();
             SetMouseCursorVisible(false);

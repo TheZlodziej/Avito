@@ -20,12 +20,13 @@ namespace Avito.Lib.GameObjects.Characters
             // draw hud
         }
 
-        public override void Update(Time deltaTime, RenderWindow? window = null)
+        public override void Update(Time deltaTime, RenderWindow window)
         {
             base.Update(deltaTime, window);
             Movement(deltaTime);
-            Console.WriteLine(Physics.Velocity);
-            Console.WriteLine(Physics.Acceleration);
+            LookAt(Utils.CursorCoords(window));
+            //Console.WriteLine(Physics.Velocity);
+            //Console.WriteLine(Physics.Acceleration);
 
             // update hud
             // update inventory <- in base class

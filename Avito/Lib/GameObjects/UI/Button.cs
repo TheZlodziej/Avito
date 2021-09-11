@@ -60,7 +60,7 @@ namespace Avito.Lib.GameObjects.UI
 
         public bool MouseIsOver(RenderWindow relativeWindow)
         {
-            var mousePos = relativeWindow.MapPixelToCoords(Mouse.GetPosition(relativeWindow));
+            var mousePos = Utils.CursorCoords(relativeWindow);
             return _rect.GetGlobalBounds().Contains(mousePos.X, mousePos.Y);
         }
     }
