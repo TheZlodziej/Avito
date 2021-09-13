@@ -34,7 +34,11 @@ namespace Avito.Lib.GameObjects.UI
         public void UpdateBackground(RenderWindow window)
         {
             View view = window.GetView();
-            _background.Position = view.Center - view.Size / 2f + Settings.Hud.ItemsBackgroundPosition;
+            _background.Position = new(
+                view.Center.X - _background.Size.X / 2f,
+                view.Center.Y + view.Size.Y / 2f - _background.Size.Y
+            );
+
         }
 
         public void Update(RenderWindow window)
