@@ -1,7 +1,6 @@
 ﻿using SFML.Graphics;
 using System;
 using SFML.Window;
-
 using GameSettings = Avito.Settings;
 
 namespace Avito.Lib.Window
