@@ -11,15 +11,23 @@ namespace Avito.Lib.Window
 
         public void Update(RenderWindow window)
         {
-            Size = (Vector2f)window.Size;
+            Size = Settings.Window.Size;
 
             if (Pin == null)
                 Center = Size / 2f;
 
             else
                 Center = Pin.Position;
-            
+
+            Resize(window);
             window.SetView(this);
+        }
+
+        public void Resize(RenderWindow window)
+        {
+           Vector2f winSize = (Vector2f)window.Size;
+           float aspectRatio = winSize.X / winSize.Y;
+           Size = new (Settings.Window.Size.Y * aspectRatio, Settings.Window.Size.Y);
         }
     }
 }

@@ -8,10 +8,10 @@ namespace Avito.Lib.Window
     public class GameWindow : RenderWindow
     {
         public GameWindow() : 
-            base(new(GameSettings.UWindowSize.X, GameSettings.UWindowSize.Y), 
-                    GameSettings.WindowTitle, 
+            base(new(GameSettings.Window.USize.X, GameSettings.Window.USize.Y), 
+                    GameSettings.Window.Title, 
                     Styles.Default, 
-                    GameSettings.WindowSettings)
+                    GameSettings.Window.Settings)
         {
             AddWindowEvents();
             SetMouseCursorVisible(false);

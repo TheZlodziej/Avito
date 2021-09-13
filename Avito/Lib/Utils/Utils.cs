@@ -7,7 +7,13 @@ namespace Avito.Lib
 {
     public static class Utils
     {
-        public static Vector2f HadamarProductVec2(Vector2f vec1, Vector2f vec2)
+
+        public static Vector2f HadamarProductDivisionVec2f(Vector2f vec1, Vector2f vec2)
+        {
+            return new(vec1.X / vec2.X, vec1.Y / vec2.Y);
+        }
+
+        public static Vector2f HadamarProductMultiplicationVec2(Vector2f vec1, Vector2f vec2)
         {
             return new(vec1.X * vec2.X, vec1.Y * vec2.Y);
         }
