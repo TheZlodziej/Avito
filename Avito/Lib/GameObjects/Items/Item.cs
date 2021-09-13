@@ -9,7 +9,13 @@ namespace Avito.Lib.GameObjects.Items
         public Character? Owner { get; set; }
         public Item(Texture texture) : base(texture) { }
         public abstract void Use();
-        public abstract void Draw(RenderWindow window);
+        public virtual void Draw(RenderWindow window)
+        {
+            window.Draw(this);
+        }
+
+        // if Owner is null it means the item is on the ground
+        // else it's been collected and should be updated differently
         public abstract void Update(Time deltaTime, RenderWindow window);
     }
 }
