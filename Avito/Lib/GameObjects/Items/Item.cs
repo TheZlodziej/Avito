@@ -4,7 +4,7 @@ using SFML.System;
 
 namespace Avito.Lib.GameObjects.Items
 {
-    abstract class Item : Sprite, IGameObject
+    public abstract class Item : Sprite, IGameObject
     {
         public Character? Owner { get; set; }
         public Item(Texture texture) : base(texture) { }

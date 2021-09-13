@@ -10,16 +10,18 @@ namespace Avito.Lib.Scene
     {
         readonly Button btn = new("test btn");
         readonly Player player = new();
-
+        readonly Hud hud;
         public GameScene() : base()
         {
             Camera.Pin = player;
+            hud = new(player);
         }
 
         public override void Draw(RenderWindow window)
         {
             btn.Draw(window);
             player.Draw(window);
+            hud.Draw(window);
         }
 
         public override void Update(Time deltaTime, RenderWindow window)
@@ -27,6 +29,7 @@ namespace Avito.Lib.Scene
             base.Update(deltaTime, window);
             btn.Update(deltaTime, window);
             player.Update(deltaTime, window);
+            hud.Update(window);
         }
     }
 }

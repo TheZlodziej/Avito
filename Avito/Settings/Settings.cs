@@ -12,11 +12,19 @@ namespace Avito
 
         // WINDOW
         public static string WindowTitle { get; set; } = "Avito";
-        public static uint WindowWidth { get; set; } = 720u;
-        public static uint WindowHeight { get; set; } = 520u;
+        public static Vector2f WindowSize { get; set; } = new(720, 520);
+        public static Vector2u UWindowSize { get; set; } = new((uint)WindowSize.X, (uint)WindowSize.Y);
         public static Color WindowClearColor { get; set; } = Color.Red;
-        public static uint MaxFps { get; internal set; } = 120;
-        public static ContextSettings WindowSettings { get; internal set; } = new() { AntialiasingLevel = 8 };
+        public static uint MaxFps { get; set; } = 120;
+        public static ContextSettings WindowSettings { get; set; } = new() { AntialiasingLevel = 8 };
+
+        // HUD
+        public static class Hud 
+        {
+            public static Vector2f ItemsBackgroundSize { get; set; } = new(WindowSize.X * 0.8f, 50f);
+            public static Color ItemsBackroundColor { get; set; } = new(0, 0, 0, 100);
+            public static Vector2f ItemsBackgroundPosition { get; set; } = new((WindowSize.X - ItemsBackgroundSize.X)/2f, WindowSize.Y - ItemsBackgroundSize.Y);
+        }
 
         public static class Controls
         {

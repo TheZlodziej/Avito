@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Avito.Lib.GameObjects.Items
 {
-    class Inventory : IGameObject
+    public class Inventory : IGameObject
     {
         public List<Item> Items { get; set; } = new();
 

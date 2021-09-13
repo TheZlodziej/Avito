@@ -29,7 +29,7 @@ namespace Avito
         }
         private void Draw()
         {
-            Window.Clear(GameWindow.ClearColor);
+            Window.Clear(Settings.WindowClearColor);
             Scenes.ActiveScene.Draw(Window);
             Cursor.Draw(Window);
             Window.Display();
