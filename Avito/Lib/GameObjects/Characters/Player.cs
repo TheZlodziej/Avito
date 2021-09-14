@@ -25,9 +25,7 @@ namespace Avito.Lib.GameObjects.Characters
             base.Update(deltaTime, window);
             Movement(deltaTime);
             LookAt(Utils.CursorCoords(window));
-            //Console.WriteLine(Physics.Velocity);
-            //Console.WriteLine(Physics.Acceleration);
-
+            
             // update hud
             // update inventory <- in base class
         }
