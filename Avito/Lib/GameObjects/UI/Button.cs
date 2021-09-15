@@ -8,6 +8,16 @@ namespace Avito.Lib.GameObjects.UI
         private readonly RectangleShape _rect;
         private readonly Text _text;
 
+        public override Vector2f Position 
+        { 
+            get => _rect.Position;
+            set
+            {
+                _rect.Position = value;
+                _text.Position = value;
+            }
+        }
+
         public Button(string text) : this(text, Assets.Fonts.Default, Assets.Fonts.Size) { }
 
         public Button(string text, Font font, uint characterSize):base()

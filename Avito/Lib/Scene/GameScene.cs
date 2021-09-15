@@ -16,6 +16,8 @@ namespace Avito.Lib.Scene
         {
             Camera.Pin = player;
             hud = new(player);
+            ipt.Position = new(100, 100);
+            btn.Position = new(-100, -100);
         }
 
         public override void Draw(RenderWindow window)
@@ -31,7 +33,8 @@ namespace Avito.Lib.Scene
             base.Update(deltaTime, window);
             btn.Update(deltaTime, window);
             ipt.Update(deltaTime, window);
-            player.Update(deltaTime, window);
+            if(!ipt.Active)
+                player.Update(deltaTime, window);
             hud.Update(window);
         }
     }

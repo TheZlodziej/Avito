@@ -9,6 +9,15 @@ namespace Avito.Lib.GameObjects.UI
     {
         public string Value { get; set; } = "";
         public bool Active { get; set; } = false;
+        public override Vector2f Position 
+        { 
+            get => _background.Position;
+            set
+            {
+                _background.Position = value;
+                _text.Position = value;
+            }
+        }
 
         private readonly RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size*1.5f));
         private readonly Text _text = new("", Assets.Fonts.Default, Assets.Fonts.Size);
