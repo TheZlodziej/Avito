@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            
+            Client client = new();
         }
     }
 }
