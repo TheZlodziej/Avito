@@ -1,7 +1,9 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using System.Collections.Generic;
 using System.IO;
+using SfMouse = SFML.Window.Mouse;
 
 namespace Avito
 {
@@ -34,12 +36,66 @@ namespace Avito
             public static Color HpBarBackgroundColor { get; } = new(0, 0, 0, 100);
         }
 
+        public static class Input
+        {
+            public static Keyboard.Key CapitalizeKey { get; } = Keyboard.Key.LShift;
+            public static Keyboard.Key RemoveLetterKey { get; } = Keyboard.Key.Backspace;
+            public static Dictionary<Keyboard.Key, string> AvailableKeys { get; } = new() 
+            {
+                [Keyboard.Key.A] = "a",
+                [Keyboard.Key.B] = "b",
+                [Keyboard.Key.C] = "c",
+                [Keyboard.Key.D] = "d",
+                [Keyboard.Key.E] = "e",
+                [Keyboard.Key.F] = "f",
+                [Keyboard.Key.G] = "g",
+                [Keyboard.Key.H] = "h",
+                [Keyboard.Key.I] = "i",
+                [Keyboard.Key.J] = "j",
+                [Keyboard.Key.K] = "k",
+                [Keyboard.Key.L] = "l",
+                [Keyboard.Key.M] = "m",
+                [Keyboard.Key.N] = "n",
+                [Keyboard.Key.O] = "o",
+                [Keyboard.Key.P] = "p",
+                [Keyboard.Key.Q] = "q",
+                [Keyboard.Key.R] = "r",
+                [Keyboard.Key.S] = "s",
+                [Keyboard.Key.T] = "t",
+                [Keyboard.Key.U] = "u",
+                [Keyboard.Key.W] = "w",
+                [Keyboard.Key.X] = "x",
+                [Keyboard.Key.Y] = "y",
+                [Keyboard.Key.Z] = "z",
+                [Keyboard.Key.Num0] = "0",
+                [Keyboard.Key.Num1] = "1",
+                [Keyboard.Key.Num2] = "2",
+                [Keyboard.Key.Num3] = "3",
+                [Keyboard.Key.Num4] = "4",
+                [Keyboard.Key.Num5] = "5",
+                [Keyboard.Key.Num6] = "6",
+                [Keyboard.Key.Num7] = "7",
+                [Keyboard.Key.Num8] = "8",
+                [Keyboard.Key.Num9] = "9"
+            };
+            public static Color BackgroundColor { get; } = new(255, 255, 255);
+            public static Color TextColor { get; } = new(0, 0, 0);
+        }
+
         public static class Controls
         {
-            public static Keyboard.Key MoveLeft { get; } = Keyboard.Key.A;
-            public static Keyboard.Key MoveUp { get; } = Keyboard.Key.W;
-            public static Keyboard.Key MoveDown { get; } = Keyboard.Key.S;
-            public static Keyboard.Key MoveRight { get; } = Keyboard.Key.D;
+            public static class Mouse
+            {
+                public static SfMouse.Button Confirm { get; } = SfMouse.Button.Left;
+            }
+
+            public static class Movement 
+            {
+                public static Keyboard.Key Left { get; } = Keyboard.Key.A;
+                public static Keyboard.Key Up { get; } = Keyboard.Key.W;
+                public static Keyboard.Key Down { get; } = Keyboard.Key.S;
+                public static Keyboard.Key Right { get; } = Keyboard.Key.D;
+            }
         }
 
         public static class Player

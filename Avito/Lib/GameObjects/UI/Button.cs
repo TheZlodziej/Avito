@@ -1,16 +1,14 @@
-﻿using Avito.Lib.Components;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
 
 namespace Avito.Lib.GameObjects.UI
 {
-    class Button : IUi
+    class Button : Ui
     {
         private readonly RectangleShape _rect;
         private readonly Text _text;
 
-        public Button(string text) : this(text, Assets.DefaultFont, 20u) { }
+        public Button(string text) : this(text, Assets.Fonts.Default, Assets.Fonts.Size) { }
 
         public Button(string text, Font font, uint characterSize):base()
         {
@@ -20,45 +18,33 @@ namespace Avito.Lib.GameObjects.UI
             _rect = new(new Vector2f(textBounds.Width + 20, _text.CharacterSize + 14));
         }
 
-        public void Click()
+        protected override void OnClick()
         {
             _rect.FillColor = Color.Red;
         }
 
-        public void MouseEnter()
+        protected override void MouseEnter()
         {
             _rect.FillColor = Color.Blue;
         }
 
-        public void MouseLeft()
+        protected override void MouseLeft()
         {
             _rect.FillColor = Color.Green;
         }
 
-        public void Draw(RenderWindow window)
+        public override void Draw(RenderWindow window)
         {
             window.Draw(_rect);
             window.Draw(_text);
         }
 
-        public virtual void Update(Time deltaTime, RenderWindow window)
+        public override void Update(Time deltaTime, RenderWindow window)
         {
-            if (MouseIsOver(window))
-            {
-                MouseEnter();
-
-                if (Mouse.IsButtonPressed(Mouse.Button.Left))
-                {
-                    Click();
-                }
-            }
-            else
-            {
-                MouseLeft();
-            }
+            MouseEventsHandler(window);
         }
 
-        public bool MouseIsOver(RenderWindow relativeWindow)
+        protected override bool MouseIsOver(RenderWindow relativeWindow)
         {
             var mousePos = Utils.CursorCoords(relativeWindow);
             return _rect.GetGlobalBounds().Contains(mousePos.X, mousePos.Y);

@@ -34,16 +34,16 @@ namespace Avito.Lib.GameObjects.Characters
         {
             Vector2f dir = new(0,0);
 
-            if (Keyboard.IsKeyPressed(Settings.Controls.MoveRight))
+            if (Keyboard.IsKeyPressed(Settings.Controls.Movement.Right))
                 dir.X += 1;
 
-            if (Keyboard.IsKeyPressed(Settings.Controls.MoveLeft))
+            if (Keyboard.IsKeyPressed(Settings.Controls.Movement.Left))
                 dir.X -= 1;
 
-            if (Keyboard.IsKeyPressed(Settings.Controls.MoveUp))
+            if (Keyboard.IsKeyPressed(Settings.Controls.Movement.Up))
                 dir.Y -= 1;
 
-            if (Keyboard.IsKeyPressed(Settings.Controls.MoveDown))
+            if (Keyboard.IsKeyPressed(Settings.Controls.Movement.Down))
                 dir.Y += 1;
 
             dir = Utils.NormalizeVec2(dir);
