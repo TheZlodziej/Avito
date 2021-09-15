@@ -3,6 +3,7 @@ using SFML.System;
 using SFML.Window;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using SfMouse = SFML.Window.Mouse;
 
 namespace Avito
@@ -12,6 +13,14 @@ namespace Avito
         // DIRECTORY
         public static string RootDirectory { get; } = Directory.GetCurrentDirectory();
         public static uint MaxFps { get; } = 120;
+
+        // SERVER
+        public static class Server
+        {
+            public static IPAddress Host { get; } = IPAddress.Parse("127.0.0.1");
+            public static int Port { get; } = 2137;
+
+        }
 
         // WINDOW
         public static class Window
