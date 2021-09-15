@@ -76,7 +76,8 @@ namespace Avito
                 [Keyboard.Key.Num6] = "6",
                 [Keyboard.Key.Num7] = "7",
                 [Keyboard.Key.Num8] = "8",
-                [Keyboard.Key.Num9] = "9"
+                [Keyboard.Key.Num9] = "9",
+                [Keyboard.Key.Space] = " "
             };
             public static Color BackgroundColor { get; } = new(255, 255, 255);
             public static Color TextColor { get; } = new(0, 0, 0);
