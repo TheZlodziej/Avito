@@ -65,6 +65,7 @@ namespace Avito
                 [Keyboard.Key.U] = "u",
                 [Keyboard.Key.W] = "w",
                 [Keyboard.Key.X] = "x",
+                [Keyboard.Key.V] = "v",
                 [Keyboard.Key.Y] = "y",
                 [Keyboard.Key.Z] = "z",
                 [Keyboard.Key.Num0] = "0",
@@ -81,6 +82,7 @@ namespace Avito
             };
             public static Color BackgroundColor { get; } = new(255, 255, 255);
             public static Color TextColor { get; } = new(0, 0, 0);
+            public static Color ActiveBackgroundColor { get; } = new(200, 200, 200);
         }
 
         public static class Controls

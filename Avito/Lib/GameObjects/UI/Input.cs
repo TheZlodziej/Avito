@@ -10,7 +10,7 @@ namespace Avito.Lib.GameObjects.UI
         public string Value { get; set; } = "";
         public bool Active { get; set; } = false;
 
-        private readonly RectangleShape _background = new(new Vector2f(200,50));
+        private readonly RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size*1.5f));
         private readonly Text _text = new("", Assets.Fonts.Default, Assets.Fonts.Size);
         private readonly Dictionary<Keyboard.Key, bool> _keyStates = new(); // true => available (released)
 
@@ -36,7 +36,7 @@ namespace Avito.Lib.GameObjects.UI
 
         protected override void MouseEnter()
         {
-            // TODO: change background
+            _background.FillColor = Settings.Input.ActiveBackgroundColor;
         }
 
         protected override bool MouseIsOver(RenderWindow relativeWindow)
@@ -51,6 +51,7 @@ namespace Avito.Lib.GameObjects.UI
             {
                 Active = false;
             }
+            _background.FillColor = Settings.Input.BackgroundColor;
         }
 
         private void HandleLetterRemoval()
@@ -72,6 +73,7 @@ namespace Avito.Lib.GameObjects.UI
 
         private void HandleLetterInput()
         {
+            // TODO: limit input value to N letters
             foreach (var key in Settings.Input.AvailableKeys)
             {
                 if (Keyboard.IsKeyPressed(key.Key))
@@ -102,10 +104,13 @@ namespace Avito.Lib.GameObjects.UI
         {
             if (!Active)
                 return;
+            else
+                _background.FillColor = Settings.Input.ActiveBackgroundColor;
 
             HandleLetterRemoval();
             HandleLetterInput();
             _text.DisplayedString = Value;
+
         }
 
         public override void Update(Time deltaTime, RenderWindow window)
