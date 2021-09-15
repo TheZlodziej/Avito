@@ -23,9 +23,11 @@ namespace Avito.Lib.GameObjects.UI
         public Button(string text, Font font, uint characterSize):base()
         {
             _text = new(text, font, characterSize);
+            var textSize = Utils.GetTextSize(_text);
+            _text.Origin = textSize / 2f;
 
-            var textBounds = _text.GetGlobalBounds();
-            _rect = new(new Vector2f(textBounds.Width + 20, _text.CharacterSize + 14));
+            _rect = new(new Vector2f(textSize.X + 20, textSize.Y + 14));
+            _rect.Origin = _rect.Size / 2f;
         }
 
         protected override void OnClick()

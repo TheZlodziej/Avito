@@ -38,10 +38,10 @@ namespace Avito.Lib
             return new(Math.Clamp(vec.X, min, max), Math.Clamp(vec.Y, min, max));
         }
 
-        public static Vector2f SpriteSize(Sprite sprite)
+        public static Vector2f GetSpriteSize(Sprite sprite)
         {
             var bounds = sprite.GetGlobalBounds();
-            return new(bounds.Width, bounds.Height);
+            return new(bounds.Left + bounds.Width, bounds.Top + bounds.Height);
         }
 
         public static float RadToDeg(float rad)
@@ -57,6 +57,12 @@ namespace Avito.Lib
         public static Vector2f CursorCoords(RenderWindow window)
         {
             return window.MapPixelToCoords(Mouse.GetPosition(window));
+        }
+
+        public static Vector2f GetTextSize(Text text)
+        {
+            var bounds = text.GetGlobalBounds();
+            return new(bounds.Width + bounds.Left, bounds.Height + bounds.Top);
         }
     }
 }

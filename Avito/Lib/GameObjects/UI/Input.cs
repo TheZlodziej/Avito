@@ -15,21 +15,36 @@ namespace Avito.Lib.GameObjects.UI
             set
             {
                 _background.Position = value;
-                _text.Position = value;
+                _text.Position = value + new Vector2f(5,0); // adding (5,0) padding
             }
         }
 
         private readonly RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size*1.5f));
-        private readonly Text _text = new("", Assets.Fonts.Default, Assets.Fonts.Size);
+        private readonly Text _text = new("Click to enter value", Assets.Fonts.Default, Assets.Fonts.Size);
         private readonly Dictionary<Keyboard.Key, bool> _keyStates = new(); // true => available (released)
 
         public Input() : base()
         {
+            SetupInputShapes();
+            SetupKeyStates();
+        }
+
+        private void SetupInputShapes()
+        {
             _background.FillColor = Settings.Input.BackgroundColor;
+            _background.Origin = _background.Size / 2f;
+
             _text.FillColor = Settings.Input.TextColor;
+            _text.Origin = new(_background.Size.X / 2, Utils.GetTextSize(_text).Y / 2f);
+        }
+
+        private void SetupKeyStates()
+        {
             _keyStates.Add(Settings.Input.RemoveLetterKey, true);
+
             foreach (var key in Settings.Input.AvailableKeys)
                 _keyStates.Add(key.Key, true);
+ 
         }
 
         protected override void OnClick()
@@ -71,7 +86,10 @@ namespace Avito.Lib.GameObjects.UI
                 if (_keyStates[removeKey])
                 {
                     _keyStates[removeKey] = false;
-                    Value = Value.Remove(Value.Length - 1);
+                    if (Value.Length > 0)
+                    {
+                        Value = Value.Remove(Value.Length - 1);
+                    }
                 }
             }
             else
@@ -83,6 +101,9 @@ namespace Avito.Lib.GameObjects.UI
         private void HandleLetterInput()
         {
             // TODO: limit input value to N letters
+            if (Value.Length > Settings.Input.MaxSize)
+                return;
+
             foreach (var key in Settings.Input.AvailableKeys)
             {
                 if (Keyboard.IsKeyPressed(key.Key))
@@ -119,13 +140,15 @@ namespace Avito.Lib.GameObjects.UI
             HandleLetterRemoval();
             HandleLetterInput();
             _text.DisplayedString = Value;
-
         }
 
         public override void Update(Time deltaTime, RenderWindow window)
         {
             MouseEventsHandler(window);
             TextInput();
+
+            if (Keyboard.IsKeyPressed(Settings.Input.Exit))
+                Active = false;
         }
     }
 }

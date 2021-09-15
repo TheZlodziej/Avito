@@ -6,7 +6,7 @@ namespace Avito.Lib.Window
     {
         public Cursor() : base(Assets.CursorTexture)
         {
-            Origin = Utils.SpriteSize(this) / 2f;
+            Origin = Utils.GetSpriteSize(this) / 2f;
         }
 
         public void Draw(RenderWindow window)

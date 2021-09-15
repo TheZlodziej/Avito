@@ -38,6 +38,7 @@ namespace Avito
 
         public static class Input
         {
+            public static Keyboard.Key Exit { get; } = Keyboard.Key.Enter;
             public static Keyboard.Key CapitalizeKey { get; } = Keyboard.Key.LShift;
             public static Keyboard.Key RemoveLetterKey { get; } = Keyboard.Key.Backspace;
             public static Dictionary<Keyboard.Key, string> AvailableKeys { get; } = new() 
@@ -83,6 +84,7 @@ namespace Avito
             public static Color BackgroundColor { get; } = new(255, 255, 255);
             public static Color TextColor { get; } = new(0, 0, 0);
             public static Color ActiveBackgroundColor { get; } = new(200, 200, 200);
+            public static int MaxSize { get; } = 15;
         }
 
         public static class Controls
