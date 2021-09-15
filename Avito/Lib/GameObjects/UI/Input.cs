@@ -1,11 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Avito.Lib.GameObjects.UI
 {
@@ -14,8 +10,8 @@ namespace Avito.Lib.GameObjects.UI
         public string Value { get; set; } = "";
         public bool Active { get; set; } = false;
 
-        private RectangleShape _background = new(new Vector2f(200,50));
-        private Text _text = new("", Assets.Fonts.Default, Assets.Fonts.Size);
+        private readonly RectangleShape _background = new(new Vector2f(200,50));
+        private readonly Text _text = new("", Assets.Fonts.Default, Assets.Fonts.Size);
         private readonly Dictionary<Keyboard.Key, bool> _keyStates = new(); // true => available (released)
 
         public Input() : base()
