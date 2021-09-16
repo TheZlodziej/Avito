@@ -28,10 +28,10 @@ namespace Avito.Server
             while (client.Connected)
             {
                 Message message = (Message)formatter.Deserialize(stream);
-                Console.WriteLine($"[SERVER] Recieved: {message}");
+               // Console.WriteLine($"[SERVER] Recieved: {message}");
             }
 
-            _clients.TryRemove(client, out _);
+            _clients.TryRemove(client, out _); // TODO: fix error (when client disconnect it crashes)
         }
 
         private void ClientConnectionListener()
