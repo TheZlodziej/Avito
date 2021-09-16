@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Avito.Lib.Networking;
+using System;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 
 namespace Avito.Server
 {
     public class Server : TcpListener
     {
+        private readonly ConcurrentQueue<Message> _messages = new();
         private readonly Thread _clientConnectionListener;
-        private readonly List<(Thread, TcpClient)> _clients = new();
+        private readonly ConcurrentDictionary<TcpClient, Thread> _clients = new();
         public Server() : this(Settings.Server.Host, Settings.Server.Port) { }
         public Server(IPAddress hostname, int port) : base(hostname, port)
         {
@@ -20,6 +23,15 @@ namespace Avito.Server
         {
             TcpClient client = obj as TcpClient;
             NetworkStream stream = client.GetStream();
+            BinaryFormatter formatter = new();
+
+            while (client.Connected)
+            {
+                Message message = (Message)formatter.Deserialize(stream);
+                Console.WriteLine($"[SERVER] Recieved: {message}");
+            }
+
+            _clients.TryRemove(client, out _);
         }
 
         private void ClientConnectionListener()
@@ -30,7 +42,11 @@ namespace Avito.Server
             {
                 TcpClient client = AcceptTcpClient();
                 Thread thread = new(new ParameterizedThreadStart(ClientDataListener));
-                _clients.Add((thread, client));
+                if (!_clients.TryAdd(client, thread))
+                {
+                    Console.WriteLine($"[SERVER] User already exists.");
+                    throw new InvalidOperationException();
+                }
                 thread.Start(client);
                 Console.WriteLine($"[SERVER] New connection from {client.Client.RemoteEndPoint}.");
             }
