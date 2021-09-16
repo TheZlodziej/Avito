@@ -7,11 +7,11 @@ namespace Avito.Client
 {
     class Client : TcpClient
     {
+        private readonly BinaryFormatter _formatter = new();
         public Client() : this(Settings.Server.Host.ToString(), Settings.Server.Port) { }
         public Client(string host, int port) : base(host, port)
         {
             NetworkStream stream = GetStream();
-            BinaryFormatter formatter = new();
 
             while (Connected) 
             {
@@ -21,7 +21,7 @@ namespace Avito.Client
                     Body = new string("test string")
                 };
 
-                formatter.Serialize(stream, message);
+                _formatter.Serialize(stream, message);
                 Console.WriteLine($"[CLIENT] Sending message: {message}"); 
             }
         }

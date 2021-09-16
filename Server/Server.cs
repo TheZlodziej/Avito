@@ -1,7 +1,9 @@
 ﻿using Avito.Lib.Networking;
 using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
@@ -24,14 +26,21 @@ namespace Avito.Server
             TcpClient client = obj as TcpClient;
             NetworkStream stream = client.GetStream();
             BinaryFormatter formatter = new();
-
             while (client.Connected)
             {
-                Message message = (Message)formatter.Deserialize(stream);
-               // Console.WriteLine($"[SERVER] Recieved: {message}");
+                try
+                {
+                    Message message = (Message)formatter.Deserialize(stream);
+                    Console.WriteLine($"[SERVER] Recieved: {message}");
+                }
+                catch 
+                {
+                    client.Close();
+                }
             }
 
-            _clients.TryRemove(client, out _); // TODO: fix error (when client disconnect it crashes)
+            _clients.TryRemove(client, out _);
+            Console.WriteLine($"[SERVER] Client disconnected. Remaining clients {_clients.Count}");
         }
 
         private void ClientConnectionListener()
