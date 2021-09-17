@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System;
 
 namespace Avito.Lib.Networking
 {
@@ -7,7 +8,7 @@ namespace Avito.Lib.Networking
     {
         public enum Type { Disconnect, Join };
         [DataMember] public Type Header { get; set; }
-        [DataMember] public object Body { get; set; }
+        [DataMember] public object? Body { get; set; }
 
         public override string ToString()
         {
