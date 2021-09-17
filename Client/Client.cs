@@ -16,14 +16,14 @@ namespace Avito.Client
             while (Connected)
             {
                 Console.WriteLine("connected");
-                Message message = new()
+                Message testMessage = new()
                 {
                     Header = Message.Type.Join,
                     Body = new string("test string")
                 };
 
-                _serializer.WriteObject(stream, message);
-                Console.WriteLine($"[CLIENT] Sending message: {message}");
+                _serializer.WriteObject(stream, testMessage);
+                Console.WriteLine($"[CLIENT] Sending message: {testMessage}");
 
                 Message messageRecieved = (Message)_serializer.ReadObject(stream);
                 Console.WriteLine($"[CLIENT] Recieved: {messageRecieved}");
