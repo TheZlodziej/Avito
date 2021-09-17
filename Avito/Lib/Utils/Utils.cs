@@ -29,7 +29,7 @@ namespace Avito.Lib
 
             if (len == 0f)
                 return new(0, 0);
-            
+
             return 1f / len * vec;
         }
 
@@ -46,7 +46,7 @@ namespace Avito.Lib
 
         public static float RadToDeg(float rad)
         {
-            return 180f / MathF.PI * rad; 
+            return 180f / MathF.PI * rad;
         }
 
         public static float DegToRad(float deg)

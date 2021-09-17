@@ -21,7 +21,7 @@ namespace Avito
             }
         }
 
-        private void Update() 
+        private void Update()
         {
             DeltaTime = Clock.Restart();
             Scenes.ActiveScene.Update(DeltaTime, Window);

@@ -1,16 +1,16 @@
 ﻿using SFML.Graphics;
-using System;
 using SFML.Window;
+using System;
 using GameSettings = Avito.Settings;
 
 namespace Avito.Lib.Window
 {
     public class GameWindow : RenderWindow
     {
-        public GameWindow() : 
-            base(new(GameSettings.Window.USize.X, GameSettings.Window.USize.Y), 
-                    GameSettings.Window.Title, 
-                    Styles.Default, 
+        public GameWindow() :
+            base(new(GameSettings.Window.USize.X, GameSettings.Window.USize.Y),
+                    GameSettings.Window.Title,
+                    Styles.Default,
                     GameSettings.Window.Settings)
         {
             AddWindowEvents();

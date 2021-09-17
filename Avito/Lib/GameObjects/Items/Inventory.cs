@@ -1,5 +1,4 @@
-﻿using Avito.Lib.GameObjects.Characters;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
 using System.Collections.Generic;
 
@@ -19,7 +18,7 @@ namespace Avito.Lib.GameObjects.Items
 
         public void Draw(RenderWindow window)
         {
-            foreach(var item in Items)
+            foreach (var item in Items)
             {
                 item.Draw(window);
             }

@@ -15,7 +15,7 @@ namespace Avito.Lib.GameObjects.Characters
 
         public Character(Texture texture) : base(texture)
         {
-            Origin = Utils.GetSpriteSize(this) /2f; 
+            Origin = Utils.GetSpriteSize(this) / 2f;
             Physics = new(this);
         }
 

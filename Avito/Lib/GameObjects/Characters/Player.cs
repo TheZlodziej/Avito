@@ -1,13 +1,12 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System;
 
 namespace Avito.Lib.GameObjects.Characters
 {
     public class Player : Character
     {
-        public Player() : base(Assets.PlayerTexture) 
+        public Player() : base(Assets.PlayerTexture)
         {
             Hp = Settings.Player.DefaultHp;
             Mass = Settings.Player.Mass;
@@ -25,14 +24,14 @@ namespace Avito.Lib.GameObjects.Characters
             base.Update(deltaTime, window);
             Movement(deltaTime);
             LookAt(Utils.CursorCoords(window));
-            
+
             // update hud
             // update inventory <- in base class
         }
 
         private void Movement(Time deltaTime)
         {
-            Vector2f dir = new(0,0);
+            Vector2f dir = new(0, 0);
 
             if (Keyboard.IsKeyPressed(Settings.Controls.Movement.Right))
                 dir.X += 1;

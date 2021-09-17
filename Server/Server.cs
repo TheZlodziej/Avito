@@ -1,18 +1,16 @@
 ﻿using Avito.Lib.Networking;
 using System;
 using System.Collections.Concurrent;
-using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using System.Threading;
 
 namespace Avito.Server
 {
     public class Server : TcpListener
     {
-        private readonly ConcurrentQueue<Message> _messages = new();
+        //private readonly ConcurrentQueue<Message> _messages = new();
         private readonly Thread _clientConnectionListener;
         private readonly ConcurrentDictionary<TcpClient, Thread> _clients = new();
         public Server() : this(Settings.Server.Host, Settings.Server.Port) { }
@@ -21,19 +19,33 @@ namespace Avito.Server
             _clientConnectionListener = new Thread(new ThreadStart(ClientConnectionListener));
         }
 
+        private void SendMessageToClients(Message message)
+        {
+            DataContractSerializer serializer = new(typeof(Message));
+
+            foreach (var client in _clients)
+            {
+                NetworkStream stream = client.Key.GetStream();
+                serializer.WriteObject(stream, message);
+                Console.WriteLine($"[SERVER] Sending {message} to {client.Key.Client.RemoteEndPoint}");
+            }
+        }
+
         private void ClientDataListener(object obj)
         {
             TcpClient client = obj as TcpClient;
             NetworkStream stream = client.GetStream();
-            BinaryFormatter formatter = new();
+            DataContractSerializer serializer = new(typeof(Message));
             while (client.Connected)
             {
                 try
                 {
-                    Message message = (Message)formatter.Deserialize(stream);
+                    Message message = (Message)serializer.ReadObject(stream);
                     Console.WriteLine($"[SERVER] Recieved: {message}");
+
+                    SendMessageToClients(message);
                 }
-                catch 
+                catch
                 {
                     client.Close();
                 }
@@ -46,7 +58,7 @@ namespace Avito.Server
         private void ClientConnectionListener()
         {
             Console.WriteLine("[SERVER] Waiting for connections...");
-            
+
             while (true)
             {
                 TcpClient client = AcceptTcpClient();

@@ -50,7 +50,7 @@ namespace Avito
             public static Keyboard.Key Exit { get; } = Keyboard.Key.Enter;
             public static Keyboard.Key CapitalizeKey { get; } = Keyboard.Key.LShift;
             public static Keyboard.Key RemoveLetterKey { get; } = Keyboard.Key.Backspace;
-            public static Dictionary<Keyboard.Key, string> AvailableKeys { get; } = new() 
+            public static Dictionary<Keyboard.Key, string> AvailableKeys { get; } = new()
             {
                 [Keyboard.Key.A] = "a",
                 [Keyboard.Key.B] = "b",
@@ -103,7 +103,7 @@ namespace Avito
                 public static SfMouse.Button Confirm { get; } = SfMouse.Button.Left;
             }
 
-            public static class Movement 
+            public static class Movement
             {
                 public static Keyboard.Key Left { get; } = Keyboard.Key.A;
                 public static Keyboard.Key Up { get; } = Keyboard.Key.W;

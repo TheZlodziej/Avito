@@ -7,7 +7,7 @@ namespace Avito.Lib.Window
     {
         // Transformable object that the camera is pinned to
         // if not set then the camera center is set to Window.Size/2f
-        public Transformable? Pin { get; set; } 
+        public Transformable? Pin { get; set; }
 
         public void Update(RenderWindow window)
         {
@@ -25,9 +25,9 @@ namespace Avito.Lib.Window
 
         public void Resize(RenderWindow window)
         {
-           Vector2f winSize = (Vector2f)window.Size;
-           float aspectRatio = winSize.X / winSize.Y;
-           Size = new (Settings.Window.Size.Y * aspectRatio, Settings.Window.Size.Y);
+            Vector2f winSize = (Vector2f)window.Size;
+            float aspectRatio = winSize.X / winSize.Y;
+            Size = new(Settings.Window.Size.Y * aspectRatio, Settings.Window.Size.Y);
         }
     }
 }

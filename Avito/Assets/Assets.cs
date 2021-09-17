@@ -6,7 +6,7 @@ namespace Avito
     public static partial class Assets
     {
         // DIRECTORY PATH
-        public static string AssetsDirectory { get;} = Path.Join(Settings.RootDirectory, "Assets");
+        public static string AssetsDirectory { get; } = Path.Join(Settings.RootDirectory, "Assets");
 
         // FONTS
         public static class Fonts

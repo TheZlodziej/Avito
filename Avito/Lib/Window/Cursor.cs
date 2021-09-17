@@ -15,7 +15,7 @@ namespace Avito.Lib.Window
         }
 
         public void Update(RenderWindow window)
-        { 
+        {
             Position = Utils.CursorCoords(window);
         }
     }

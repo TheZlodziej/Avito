@@ -33,7 +33,7 @@ namespace Avito.Lib.Scene
             base.Update(deltaTime, window);
             btn.Update(deltaTime, window);
             ipt.Update(deltaTime, window);
-            if(!ipt.Active)
+            if (!ipt.Active)
                 player.Update(deltaTime, window);
             hud.Update(window);
         }

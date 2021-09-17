@@ -18,7 +18,7 @@ namespace Avito.Lib.Scene
         private void LoadScenes()
         {
             foreach (var type in typeof(SceneManager).Assembly.GetTypes())
-            {  
+            {
                 if (!type.IsAbstract && type.IsSubclassOf(typeof(Scene)))
                 {
                     var ctor = type.GetConstructor(Array.Empty<Type>());

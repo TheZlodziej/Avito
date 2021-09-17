@@ -11,7 +11,7 @@ namespace Avito.Lib.GameObjects.UI
         private readonly RectangleShape _background = new(Settings.Hud.ItemsBackgroundSize);
         private readonly RectangleShape _hpBar = new(new Vector2f(Settings.Hud.HpBarSize.X * Settings.Player.DefaultHp, Settings.Hud.HpBarSize.Y));
         private readonly RectangleShape _hpBarBackground = new(new Vector2f(Settings.Hud.HpBarSize.X * Settings.Player.DefaultHp, Settings.Hud.HpBarSize.Y));
-        public Hud(Character owner): base()
+        public Hud(Character owner) : base()
         {
             Owner = owner;
             SetupBackground();
@@ -63,7 +63,7 @@ namespace Avito.Lib.GameObjects.UI
             // TODO: remove this test
             if (Keyboard.IsKeyPressed(Keyboard.Key.F1))
             {
-                Owner.Hp-=1;
+                Owner.Hp -= 1;
             }
             //
             UpdateBackground(view);

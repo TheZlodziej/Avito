@@ -9,17 +9,17 @@ namespace Avito.Lib.GameObjects.UI
     {
         public string Value { get; set; } = "";
         public bool Active { get; set; } = false;
-        public override Vector2f Position 
-        { 
+        public override Vector2f Position
+        {
             get => _background.Position;
             set
             {
                 _background.Position = value;
-                _text.Position = value + new Vector2f(5,0); // adding (5,0) padding
+                _text.Position = value + new Vector2f(5, 0); // adding (5,0) padding
             }
         }
 
-        private readonly RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size*1.5f));
+        private readonly RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size * 1.5f));
         private readonly Text _text = new("Click to enter value", Assets.Fonts.Default, Assets.Fonts.Size);
         private readonly Dictionary<Keyboard.Key, bool> _keyStates = new(); // true => available (released)
 
@@ -44,7 +44,7 @@ namespace Avito.Lib.GameObjects.UI
 
             foreach (var key in Settings.Input.AvailableKeys)
                 _keyStates.Add(key.Key, true);
- 
+
         }
 
         protected override void OnClick()

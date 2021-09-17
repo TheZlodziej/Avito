@@ -6,7 +6,7 @@ namespace Avito.Lib.Components
 {
     public class Physics
     {
-        public Vector2f Acceleration  = new();
+        public Vector2f Acceleration = new();
         public Vector2f Velocity = new();
         public float Mass;
 
@@ -20,7 +20,7 @@ namespace Avito.Lib.Components
         public void Update(Time deltaTime)
         {
             Velocity *= Settings.Physics.FrictionCoeff;
-            
+
             if (Math.Abs(Velocity.X) < 0.01)
             {
                 Velocity.X = 0f;
