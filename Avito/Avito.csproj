@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Lib\Networking\Message.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SFML.Net" Version="2.5.0" />
   </ItemGroup>
 
@@ -21,7 +26,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="XCOPY &quot;$(SolutionDir)Avito\Assets&quot; &quot;$(TargetDir)Assets&quot; /S /Y" />
+    <Exec Command="XCOPY &quot;$(ProjectDir)\Assets&quot; &quot;$(TargetDir)Assets&quot; /S /Y" />
   </Target>
 
 </Project>
