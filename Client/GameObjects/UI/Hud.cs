@@ -6,7 +6,7 @@ using System;
 
 namespace Avito.Client.GameObjects.UI
 {
-    public sealed class Hud : IDisposable
+    public sealed class Hud
     {
         public Character Owner { get; set; }
 
@@ -71,18 +71,6 @@ namespace Avito.Client.GameObjects.UI
             //
             UpdateBackground(view);
             UpdateHpBar(view);
-        }
-
-        public void Dispose()
-        {
-            _background?.Dispose();
-            _background = null!;
-
-            _hpBar?.Dispose();
-            _hpBar = null!;
-
-            _hpBarBackground?.Dispose();
-            _hpBarBackground = null!;
         }
     }
 }

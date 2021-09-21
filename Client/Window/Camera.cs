@@ -3,7 +3,7 @@ using SFML.System;
 
 namespace Avito.Client.Window
 {
-    public class Camera : View // IDisposable inherited
+    public class Camera : View
     {
         // Transformable object that the camera is pinned to
         // if not set then the camera center is set to Window.Size/2f

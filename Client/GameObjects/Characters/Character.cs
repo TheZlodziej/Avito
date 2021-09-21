@@ -38,11 +38,5 @@ namespace Avito.Client.GameObjects.Characters
             float angleDeg = Utils.RadToDeg(MathF.Atan2(dPos.Y, dPos.X));
             Rotation = angleDeg + 90f;
         }
-
-        public new virtual void Dispose()
-        {
-            Inventory.Dispose();
-            base.Dispose();
-        }
     }
 }

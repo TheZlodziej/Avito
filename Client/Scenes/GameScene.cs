@@ -41,13 +41,6 @@ namespace Avito.Client.Scenes
 
         public override void Dispose()
         {
-            //dispose game objects
-            btn.Dispose();
-            player.Dispose();
-            hud.Dispose();
-            ipt.Dispose();
-
-            //dispose client
             client?.Dispose();
             client = null!;
 

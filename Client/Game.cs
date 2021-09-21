@@ -38,17 +38,8 @@ namespace Avito.Client
 
         public void Dispose()
         {
-            Window?.Dispose();
-            Window = null!;
-
             Scenes?.Dispose();
             Scenes = null!;
-
-            Clock?.Dispose();
-            Clock = null!;
-
-            Cursor?.Dispose();
-            Cursor = null!;
         }
     }
 }

@@ -3,7 +3,7 @@ using SFML.Graphics;
 
 namespace Avito.Client.Window
 {
-    public class Cursor : Sprite // IDisposable inherited
+    public class Cursor : Sprite
     {
         public Cursor() : base(Assets.CursorTexture)
         {

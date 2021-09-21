@@ -62,16 +62,5 @@ namespace Avito.Client.GameObjects.UI
             var mousePos = Utils.CursorCoords(relativeWindow);
             return _rect.GetGlobalBounds().Contains(mousePos.X, mousePos.Y);
         }
-
-        public override void Dispose()
-        {
-            _rect?.Dispose();
-            _rect = null!;
-
-            _text?.Dispose();
-            _text = null!;
-
-            base.Dispose();
-        }
     }
 }

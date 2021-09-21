@@ -48,8 +48,6 @@ namespace Avito.Client.Scenes
             {
                 scene.Value?.Dispose();
             }
-
-            ActiveScene = null!;
         }
     }
 }

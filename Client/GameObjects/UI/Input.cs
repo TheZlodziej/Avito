@@ -29,16 +29,6 @@ namespace Avito.Client.GameObjects.UI
             SetupInputShapes();
             SetupKeyStates();
         }
-        public override void Dispose()
-        {
-            _background?.Dispose();
-            _background = null!;
-
-            _text?.Dispose();
-            _text = null!;
-
-            base.Dispose();
-        }
 
         private void SetupInputShapes()
         {
