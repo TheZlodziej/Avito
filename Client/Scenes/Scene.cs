@@ -14,7 +14,6 @@ namespace Avito.Client.Scenes
             Camera?.Dispose();
             Camera = null!;
         }
-
         public abstract void Draw(RenderWindow window);
         public virtual void Update(Time deltaTime, RenderWindow window)
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Avito.Client
 {
-    class Client : TcpClient // IDisposable (inherits from TcpClient)
+    class Client : TcpClient // IDisposable inherited
     {
         private NetworkStream _stream;
         private StreamWriter _writer;
@@ -15,11 +15,22 @@ namespace Avito.Client
         public Client()
             : this(Settings.Server.Host.ToString(), Settings.Server.Port)
         {
-
         }
 
-        public Client(string host, int port) : base(host, port)
+        public Client(string host, int port) : base()
         {
+            while (!Connected)
+            {
+                try
+                {
+                    Connect(host, port);
+                }
+                catch 
+                {
+                    Console.WriteLine($"Trying to connect to {host}:{port}.");
+                }
+            }
+
             _stream = GetStream();
             Encoding enc = new UTF8Encoding(false);
             _writer = new StreamWriter(_stream, enc, leaveOpen: true);
