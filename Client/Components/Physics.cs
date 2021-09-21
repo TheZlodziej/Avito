@@ -1,8 +1,9 @@
-﻿using Avito.Lib.GameObjects.Characters;
+﻿using Avito.Client.GameObjects.Characters;
+using Avito.Lib;
 using SFML.System;
 using System;
 
-namespace Avito.Lib.Components
+namespace Avito.Client.Components
 {
     public class Physics
     {

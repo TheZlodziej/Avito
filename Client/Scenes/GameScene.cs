@@ -1,13 +1,14 @@
-﻿using Avito.Lib.GameObjects.Characters;
-using Avito.Lib.GameObjects.UI;
-using Avito.Lib.Window;
+﻿using Avito.Client.GameObjects.Characters;
+using Avito.Client.GameObjects.UI;
+using Avito.Client.Window;
 using SFML.Graphics;
 using SFML.System;
 
-namespace Avito.Lib.Scene
+namespace Avito.Client.Scenes
 {
-    class GameScene : Scene
+    public sealed class GameScene : Scene
     {
+        Client client = new();
         readonly Button btn = new("test btn");
         readonly Player player = new();
         readonly Hud hud;
@@ -36,6 +37,17 @@ namespace Avito.Lib.Scene
             if (!ipt.Active)
                 player.Update(deltaTime, window);
             hud.Update(window);
+        }
+
+        public override void Dispose()
+        {
+            //dispose game objects
+
+            //dispose client
+            client?.Dispose();
+            client = null!;
+
+            base.Dispose();
         }
     }
 }

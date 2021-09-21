@@ -2,7 +2,7 @@
 using SFML.System;
 using System.Collections.Generic;
 
-namespace Avito.Lib.GameObjects.Items
+namespace Avito.Client.GameObjects.Items
 {
     public class Inventory : IGameObject
     {
@@ -21,6 +21,14 @@ namespace Avito.Lib.GameObjects.Items
             foreach (var item in Items)
             {
                 item.Draw(window);
+            }
+        }
+
+        public void Dispose()
+        {
+            foreach (var item in Items)
+            {
+                item?.Dispose();
             }
         }
     }

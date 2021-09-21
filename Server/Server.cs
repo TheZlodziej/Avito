@@ -26,7 +26,7 @@ namespace Avito.Server
         private void ClientConnectionListener()
         {
             Console.WriteLine("[SERVER] Waiting for connections...");
-            CancellationTokenSource cts =  new();
+            CancellationTokenSource cts = new();
 
             while (true)
             {

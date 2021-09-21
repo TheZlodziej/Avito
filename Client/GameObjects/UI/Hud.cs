@@ -1,16 +1,19 @@
-﻿using Avito.Lib.GameObjects.Characters;
+﻿using Avito.Client.GameObjects.Characters;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using System;
 
-namespace Avito.Lib.GameObjects.UI
+namespace Avito.Client.GameObjects.UI
 {
-    public class Hud
+    public sealed class Hud : IDisposable
     {
         public Character Owner { get; set; }
-        private readonly RectangleShape _background = new(Settings.Hud.ItemsBackgroundSize);
-        private readonly RectangleShape _hpBar = new(new Vector2f(Settings.Hud.HpBarSize.X * Settings.Player.DefaultHp, Settings.Hud.HpBarSize.Y));
-        private readonly RectangleShape _hpBarBackground = new(new Vector2f(Settings.Hud.HpBarSize.X * Settings.Player.DefaultHp, Settings.Hud.HpBarSize.Y));
+
+        private RectangleShape _background = new(Settings.Hud.ItemsBackgroundSize);
+        private RectangleShape _hpBar = new(new Vector2f(Settings.Hud.HpBarSize.X * Settings.Player.DefaultHp, Settings.Hud.HpBarSize.Y));
+        private RectangleShape _hpBarBackground = new(new Vector2f(Settings.Hud.HpBarSize.X * Settings.Player.DefaultHp, Settings.Hud.HpBarSize.Y));
+        
         public Hud(Character owner) : base()
         {
             Owner = owner;
@@ -68,6 +71,18 @@ namespace Avito.Lib.GameObjects.UI
             //
             UpdateBackground(view);
             UpdateHpBar(view);
+        }
+
+        public void Dispose()
+        {
+            _background?.Dispose();
+            _background = null!;
+
+            _hpBar?.Dispose();
+            _hpBar = null!;
+
+            _hpBarBackground?.Dispose();
+            _hpBarBackground = null!;
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Avito.Lib.Scene
+namespace Avito.Client.Scenes
 {
-    class SceneManager
+    public sealed class SceneManager : IDisposable
     {
-        private readonly Dictionary<Type, Scene> _scenes = new();
+        private Dictionary<Type, Scene> _scenes = new();
         public Scene ActiveScene { get; set; }
 
         public SceneManager() : this(typeof(GameScene)) { }
@@ -40,6 +40,16 @@ namespace Avito.Lib.Scene
 
             if (ActiveScene == null)
                 throw new Exception("ActiveScene returned null.");
+        }
+
+        public void Dispose()
+        {
+            foreach (var scene in _scenes)
+            {
+                scene.Value?.Dispose();
+            }
+
+            ActiveScene = null!;
         }
     }
 }

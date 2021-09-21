@@ -1,8 +1,8 @@
-﻿using Avito.Lib.GameObjects.Characters;
+﻿using Avito.Client.GameObjects.Characters;
 using SFML.Graphics;
 using SFML.System;
 
-namespace Avito.Lib.GameObjects.Items
+namespace Avito.Client.GameObjects.Items
 {
     public abstract class Item : Sprite, IGameObject
     {

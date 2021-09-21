@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 
-namespace Avito.Lib.Window
+namespace Avito.Client.Window
 {
     public class Camera : View
     {

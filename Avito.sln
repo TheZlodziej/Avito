@@ -5,12 +5,12 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avito", "Avito\Avito.csproj", "{7904096E-C9CD-4FD8-B6C6-BB9DC31785CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{DF563083-4AB0-4468-95E8-B28AFFBE02D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{DF563083-4AB0-4468-95E8-B28AFFBE02D8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7904096E-C9CD-4FD8-B6C6-BB9DC31785CD} = {7904096E-C9CD-4FD8-B6C6-BB9DC31785CD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{7D05D86A-2087-431F-B0EC-2405C7CE7B04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{7D05D86A-2087-431F-B0EC-2405C7CE7B04}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7904096E-C9CD-4FD8-B6C6-BB9DC31785CD} = {7904096E-C9CD-4FD8-B6C6-BB9DC31785CD}
 	EndProjectSection

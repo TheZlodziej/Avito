@@ -4,15 +4,9 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
-//Message testMessage = new()
-//{
-//    Header = Message.MessageType.Join,
-//    Body = new string("test string")
-//};
-
 namespace Avito.Client
 {
-    class Client : TcpClient
+    class Client : TcpClient // IDisposable (inherits from TcpClient)
     {
         private NetworkStream _stream;
         private StreamWriter _writer;
@@ -21,7 +15,7 @@ namespace Avito.Client
         public Client()
             : this(Settings.Server.Host.ToString(), Settings.Server.Port)
         {
-            
+
         }
 
         public Client(string host, int port) : base(host, port)

@@ -3,7 +3,7 @@ using SFML.Window;
 using System;
 using GameSettings = Avito.Settings;
 
-namespace Avito.Lib.Window
+namespace Avito.Client.Window
 {
     public class GameWindow : RenderWindow
     {

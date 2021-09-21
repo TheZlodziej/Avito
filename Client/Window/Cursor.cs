@@ -1,8 +1,9 @@
-﻿using SFML.Graphics;
+﻿using Avito.Lib;
+using SFML.Graphics;
 
-namespace Avito.Lib.Window
+namespace Avito.Client.Window
 {
-    class Cursor : Sprite
+    public class Cursor : Sprite
     {
         public Cursor() : base(Assets.CursorTexture)
         {

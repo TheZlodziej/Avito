@@ -1,8 +1,9 @@
-﻿using SFML.Graphics;
+﻿using Avito.Lib;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
-namespace Avito.Lib.GameObjects.Characters
+namespace Avito.Client.GameObjects.Characters
 {
     public class Player : Character
     {

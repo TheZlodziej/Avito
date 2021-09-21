@@ -1,10 +1,11 @@
-﻿using Avito.Lib.Components;
-using Avito.Lib.GameObjects.Items;
+﻿using Avito.Client.Components;
+using Avito.Client.GameObjects.Items;
+using Avito.Lib;
 using SFML.Graphics;
 using SFML.System;
 using System;
 
-namespace Avito.Lib.GameObjects.Characters
+namespace Avito.Client.GameObjects.Characters
 {
     public abstract class Character : Sprite, IGameObject
     {
@@ -36,6 +37,12 @@ namespace Avito.Lib.GameObjects.Characters
             Vector2f dPos = position - Position;
             float angleDeg = Utils.RadToDeg(MathF.Atan2(dPos.Y, dPos.X));
             Rotation = angleDeg + 90f;
+        }
+
+        public new virtual void Dispose()
+        {
+            Inventory.Dispose();
+            base.Dispose();
         }
     }
 }

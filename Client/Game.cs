@@ -1,10 +1,11 @@
-﻿using Avito.Lib.Scene;
-using Avito.Lib.Window;
+﻿using Avito.Client.Scenes;
+using Avito.Client.Window;
 using SFML.System;
+using System;
 
-namespace Avito
+namespace Avito.Client
 {
-    public class Game
+    public sealed class Game : IDisposable
     {
         private GameWindow Window { get; set; } = new();
         private SceneManager Scenes { get; set; } = new();
@@ -33,6 +34,21 @@ namespace Avito
             Scenes.ActiveScene.Draw(Window);
             Cursor.Draw(Window);
             Window.Display();
+        }
+
+        public void Dispose()
+        {
+            Window?.Dispose();
+            Window = null!;
+
+            Scenes?.Dispose();
+            Scenes = null!;
+
+            Clock?.Dispose();
+            Clock = null!;
+
+            Cursor?.Dispose();
+            Cursor = null!;
         }
     }
 }

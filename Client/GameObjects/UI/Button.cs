@@ -1,12 +1,13 @@
-﻿using SFML.Graphics;
+﻿using Avito.Lib;
+using SFML.Graphics;
 using SFML.System;
 
-namespace Avito.Lib.GameObjects.UI
+namespace Avito.Client.GameObjects.UI
 {
-    class Button : Ui
+    public sealed class Button : Ui
     {
-        private readonly RectangleShape _rect;
-        private readonly Text _text;
+        private RectangleShape _rect;
+        private Text _text;
 
         public override Vector2f Position
         {
@@ -60,6 +61,17 @@ namespace Avito.Lib.GameObjects.UI
         {
             var mousePos = Utils.CursorCoords(relativeWindow);
             return _rect.GetGlobalBounds().Contains(mousePos.X, mousePos.Y);
+        }
+
+        public override void Dispose()
+        {
+            _rect?.Dispose();
+            _rect = null!;
+
+            _text?.Dispose();
+            _text = null!;
+
+            base.Dispose();
         }
     }
 }

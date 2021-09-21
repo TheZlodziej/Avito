@@ -1,11 +1,12 @@
-﻿using SFML.Graphics;
+﻿using Avito.Lib;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 using System.Collections.Generic;
 
-namespace Avito.Lib.GameObjects.UI
+namespace Avito.Client.GameObjects.UI
 {
-    class Input : Ui
+    public sealed class Input : Ui
     {
         public string Value { get; set; } = "";
         public bool Active { get; set; } = false;
@@ -19,14 +20,24 @@ namespace Avito.Lib.GameObjects.UI
             }
         }
 
-        private readonly RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size * 1.5f));
-        private readonly Text _text = new("Click to enter value", Assets.Fonts.Default, Assets.Fonts.Size);
+        private RectangleShape _background = new(new Vector2f(200, Assets.Fonts.Size * 1.5f));
+        private Text _text = new("Click to enter value", Assets.Fonts.Default, Assets.Fonts.Size);
         private readonly Dictionary<Keyboard.Key, bool> _keyStates = new(); // true => available (released)
 
         public Input() : base()
         {
             SetupInputShapes();
             SetupKeyStates();
+        }
+        public override void Dispose()
+        {
+            _background?.Dispose();
+            _background = null!;
+
+            _text?.Dispose();
+            _text = null!;
+
+            base.Dispose();
         }
 
         private void SetupInputShapes()

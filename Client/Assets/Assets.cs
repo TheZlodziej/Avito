@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using System.IO;
 using SfFont = SFML.Graphics.Font;
-namespace Avito
+namespace Avito.Client
 {
     public static partial class Assets
     {

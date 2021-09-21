@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.Window;
 
-namespace Avito.Lib.GameObjects.UI
+namespace Avito.Client.GameObjects.UI
 {
     public abstract class MouseEvents
     {

@@ -29,7 +29,7 @@ namespace Avito.Server
             Task = Task.Run(MessageListener, cancellationToken);
         }
 
-        private void SendResponse(string body) 
+        private void SendResponse(string body)
             => SendResponse(ServerMessage.MessageType.RegularResponse, body);
 
         private void SendResponse(ServerMessage.MessageType messageType, string body)

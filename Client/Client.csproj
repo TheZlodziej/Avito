@@ -14,4 +14,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Avito\Avito.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Items\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="XCOPY &quot;$(ProjectDir)Assets\&quot; &quot;$(TargetDir)Assets\&quot; /S /Y" />
+  </Target>
 </Project>

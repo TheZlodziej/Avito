@@ -1,9 +1,10 @@
 ﻿using SFML.Graphics;
 using SFML.System;
+using System;
 
-namespace Avito.Lib.GameObjects
+namespace Avito.Client.GameObjects
 {
-    public interface IGameObject
+    public interface IGameObject: IDisposable
     {
         public abstract void Update(Time deltaTime, RenderWindow window);
         public abstract void Draw(RenderWindow window);
