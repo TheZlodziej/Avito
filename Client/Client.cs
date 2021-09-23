@@ -11,6 +11,7 @@ namespace Avito.Client
         private NetworkStream _stream;
         private StreamWriter _writer;
         private StreamReader _reader;
+        private string _id;
 
         public Client()
             : this(Settings.Server.Host.ToString(), Settings.Server.Port)
@@ -42,7 +43,8 @@ namespace Avito.Client
         {
             ClientMessage message = new ClientMessage(ClientMessage.MessageType.Connect, "hello");
             var response = SendMessage(message);
-            Console.WriteLine($"INFO: {response}");
+            _id = response.Body;
+            Console.WriteLine($"My ID is: {_id}");
         }
 
         public string SendMessage(string body)

@@ -5,11 +5,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Avito.Lib;
 
 namespace Avito.Server
 {
     public class ServerClientConnection : IDisposable
     {
+        public string Id { get; private set; }
         public TcpClient Client { get; private set; }
         public Task Task { get; private set; }
         public NetworkStream Stream { get; private set; }
@@ -19,13 +21,12 @@ namespace Avito.Server
 
         public ServerClientConnection(TcpClient client, CancellationToken cancellationToken)
         {
-            Console.WriteLine($"NEW CONNECTION: {client.Client.RemoteEndPoint}");
+            Id = Guid.NewGuid().ToString();
             Client = client;
             Stream = client.GetStream();
             Writer = new StreamWriter(Stream, Encoding.UTF8, leaveOpen: true);
             Reader = new StreamReader(Stream, Encoding.UTF8, leaveOpen: true);
             CancellationToken = cancellationToken;
-
             Task = Task.Run(MessageListener, cancellationToken);
         }
 
@@ -43,55 +44,40 @@ namespace Avito.Server
         {
             while (!CancellationToken.IsCancellationRequested && Client.Connected)
             {
-                try
+                string? messageString = Reader.ReadLine();
+
+                if (messageString != null)
                 {
-                    var stream = Client.GetStream();
-                    Console.WriteLine("reading message");
-
-                    byte[] buff = new byte[30000];
-                    int pos = 0;
-
-                    while (pos == 0 || buff[pos - 1] != '\n')
-                    {
-                        int ret = stream.ReadByte();
-                        if (ret == -1)
-                        {
-                            Console.WriteLine($"MessageListener: end of stream");
-                        }
-
-                        buff[pos++] = (byte)ret;
-                    }
-
-                    string? messageString = Encoding.UTF8.GetString(buff.AsSpan().Slice(0, pos));
-                    messageString = messageString.Trim();
-
-                    //string? messageString = Reader.ReadLine();
-                    //if (messageString == null)
-                    //{
-                    //    Console.WriteLine("INFO: Finished client func");
-                    //    break;
-                    //}
-
-                    ClientMessage message = ClientMessage.Deserialize(messageString);
-                    Console.WriteLine($"GOT MESSAGE: {message}");
-
-                    if (message.Header == ClientMessage.MessageType.Disconnect)
-                    {
-                        SendResponse("Bye");
-                        Console.WriteLine($"{Client.Client.RemoteEndPoint} gently asked to disconnect.");
-                        break;
-                    }
-
-                    SendResponse("dupa");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("ERROR: Exiting client func with:");
-                    Console.WriteLine($"{e}");
+                    ManageIncomingMessages(
+                        ClientMessage.Deserialize(
+                            Utils.ToUTF8(messageString)
+                        )
+                    );
                 }
             }
 
             Console.WriteLine($"{Client.Client.RemoteEndPoint} disconnected.");
+        }
+
+        private void ManageIncomingMessages(ClientMessage message)
+        {
+            Console.WriteLine($"New message from {Client.Client.RemoteEndPoint}: {message}");
+
+            switch (message.Header)
+            {
+                case ClientMessage.MessageType.Connect:
+                    SendResponse(ServerMessage.MessageType.ConnectionResponse, Id);
+                    break;
+
+                case ClientMessage.MessageType.Disconnect:
+                    SendResponse("Bye");
+                    Client.Close();
+                    break;
+
+                default:
+                    SendResponse(ServerMessage.MessageType.UnknownMessage, "I don't recongnize this type of message");
+                    break;
+            }
         }
 
         public void Dispose()

@@ -27,7 +27,9 @@ namespace Avito.Lib.Networking
 
         public enum MessageType
         {
-            RegularResponse
-        };
+            ConnectionResponse,
+            RegularResponse,
+            UnknownMessage
+        }
     }
 }

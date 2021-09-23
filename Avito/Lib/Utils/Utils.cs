@@ -2,6 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
+using System.Text;
 
 namespace Avito.Lib
 {
@@ -63,6 +64,11 @@ namespace Avito.Lib
         {
             var bounds = text.GetGlobalBounds();
             return new(bounds.Width + bounds.Left, bounds.Height + bounds.Top);
+        }
+
+        public static string ToUTF8(string str)
+        {
+            return Encoding.UTF8.GetString(Encoding.Default.GetBytes(str));
         }
     }
 }
